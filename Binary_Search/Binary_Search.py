@@ -41,3 +41,5 @@ class Solution:
             else:
                 left = mid + 1
         return -1
+# time complexity: O(logN)
+# space complexity: O(1)

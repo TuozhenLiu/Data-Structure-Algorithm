@@ -66,3 +66,5 @@ class Solution:
                 left = mid + 1
         # when left == mid == right, break loop
         return left  # not mid (when left == right for init, mid not exists)
+# time complexity: O(logN)
+# space complexity: O(1)
