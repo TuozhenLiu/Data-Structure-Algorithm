@@ -32,7 +32,7 @@ class Solution:
         # if not nums:
         #     return -1
         left, right = 0, len(nums) - 1
-        while right >= left:
+        while left <= right:  # [left, right]
             mid = (left + right) // 2
             if nums[mid] == target:
                 return mid
