@@ -39,52 +39,28 @@
 # ----------------------------------------------------------------------------------------------------------------------
 from typing import List
 
-# Input: nums1 = [1,3,5], nums2 = [2,4]
+
 class Solution:
     def findMedianSortedArrays(self, nums1: List[int], nums2: List[int]) -> float:
-        def findKthSortedArrays(nums1: List[int], nums2: List[int], k) -> int:
-            k = int(k)
-            n, m = len(nums1), len(nums2)
-            assert 1 <= k <= n + m
-            if n == 0:
-                return nums2[k - 1]
-            elif m == 0:
-                return nums1[k - 1]
-            elif n == m == 1:
+        def findKthSortedArrays(nums1: List[int], nums2: List[int], k: float) -> int:
+            k = int(k)  # divide operator return float -> int
+            while k > 0:
+                #  bound
+                if len(nums1) == 0:
+                    return nums2[k - 1]
+                if len(nums2) == 0:
+                    return nums1[k - 1]
+                #  normal
                 if k == 1:
-                    return min(nums1 + nums2)
+                    return min(nums1[0], nums2[0])
                 else:
-                    return max(nums1 + nums2)
-            elif n < m:
-                nums1, nums2 = nums2, nums1
-                n, m = m, n
-            pointer1 = (k - 1) // 2
-            pointer2 = k - 2 - pointer1
-            while True:
-                flag1 = True
-                flag2 = True
-                if pointer2 < 0:
-                    return nums1[pointer1]
-                elif pointer1 < 0:
-                    return nums2[pointer2]
-                if pointer1 + 1 >= n:
-                    flag1 = False
-                if pointer2 + 1 >= m:
-                    flag2 = False
-                if pointer2 >= m:
-                    pointer2 = (pointer2 - 1) // 2
-                    pointer1 = k - 2 - pointer2
-                elif pointer1 >= n:
-                    pointer1 = (pointer1 - 1) // 2
-                    pointer2 = k - 2 - pointer1
-                elif flag1 and nums1[pointer1 + 1] < nums2[pointer2]:
-                    pointer2 = min((pointer2) // 2, pointer2 - 1)
-                    pointer1 = k - 2 - pointer2
-                elif flag2 and nums1[pointer1] > nums2[pointer2 + 1]:
-                    pointer1 = min((pointer1) // 2, pointer1 - 1)
-                    pointer2 = k - 2 - pointer1
-                else:
-                    return max(nums1[pointer1], nums2[pointer2])
+                    if nums1[min(k // 2, len(nums1)) - 1] <= nums2[min(k // 2, len(nums2)) - 1]:
+                        l = len(nums1)
+                        nums1 = nums1[k // 2:]
+                    else:
+                        l = len(nums2)
+                        nums2 = nums2[k // 2:]
+                    k = k - min(k // 2, l)
 
         lens = len(nums1) + len(nums2)
         if lens % 2 == 0:
@@ -93,53 +69,3 @@ class Solution:
             return (a + b) / 2
         else:
             return findKthSortedArrays(nums1, nums2, (lens + 1) / 2)
-
-
-def findKthSortedArrays(nums1: List[int], nums2: List[int], k) -> int:
-    n, m = len(nums1), len(nums2)
-    assert 1 <= k <= n + m
-    if n == 0:
-        return nums2[k - 1]
-    elif m == 0:
-        return nums1[k - 1]
-    elif n == m == 1:
-        if k == 1:
-            return min(nums1 + nums2)
-        else:
-            return max(nums1 + nums2)
-    elif n < m:
-        nums1, nums2 = nums2, nums1
-        n, m = m, n
-    pointer1 = (k - 1) // 2
-    pointer2 = k - 2 - pointer1
-    while True:
-        flag1 = True
-        flag2 = True
-        if pointer2 < 0:
-            return nums1[pointer1]
-        elif pointer1 < 0:
-            return nums2[pointer2]
-        if pointer1 + 1 >= n:
-            flag1 = False
-        if pointer2 + 1 >= m:
-            flag2 = False
-        if pointer2 >= m:
-            pointer2 = (pointer2 - 1) // 2
-            pointer1 = k - 2 - pointer2
-        elif pointer1 >= n:
-            pointer1 = (pointer1 - 1) // 2
-            pointer2 = k - 2 - pointer1
-        elif flag1 and nums1[pointer1 + 1] < nums2[pointer2]:
-            pointer2 = (pointer2) // 2
-            pointer1 = k - 2 - pointer2
-        elif flag2 and nums1[pointer1] > nums2[pointer2 + 1]:
-            pointer1 = (pointer1) // 2
-            pointer2 = k - 2 - pointer1
-        else:
-            return max(nums1[pointer1], nums2[pointer2])
-
-
-nums1 = [1, 2, 3]
-nums2 = [4, 5, 6, 7, 8]
-k = 5
-print(findKthSortedArrays(nums1, nums2, k))
