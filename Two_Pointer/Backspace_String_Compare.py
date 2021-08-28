@@ -62,7 +62,7 @@ class Solution:
                 t_pointer -= 1
             elif s_pointer != -1 or t_pointer != -1:
                 return False
-        # s_pointer == t_pointer == -1
+        # assert s_pointer == t_pointer == -1
         return True
 # time complexity: O(N+M)
 # space complexity: O(1)
