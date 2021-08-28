@@ -69,3 +69,5 @@ class Solution:
             return (a + b) / 2
         else:
             return findKthSortedArrays(nums1, nums2, (lens + 1) / 2)
+# time complexity: O(log(M+N))
+# space complexity: O(1)
