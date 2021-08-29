@@ -1,6 +1,5 @@
 import unittest
-from typing import List
-from Binary_Search.Find_First_and_Last_Position_of_Element_in_Sorted_Array import Solution
+from Array.Binary_Search.Find_First_and_Last_Position_of_Element_in_Sorted_Array import Solution
 
 
 # def findKthSortedArrays(nums1: List[int], nums2: List[int], k) -> int:
