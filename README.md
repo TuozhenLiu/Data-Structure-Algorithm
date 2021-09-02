@@ -12,6 +12,19 @@
 
 快慢指针（同向），高低（左右）指针（反向）
 
+### Linked list
+
+- Dummy head
+
+- Iteration vs Two Pointer: 
+  - Iteration has one main pointer
+
+- Iteration vs Recrusion
+  - 空间：迭代O(1) < 递归O(N)
+  - 时间：迭代O(1) = 递归O(1)
+
+
+
 
 
 
