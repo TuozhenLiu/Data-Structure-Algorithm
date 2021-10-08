@@ -129,3 +129,7 @@ dmypy.json
 .pyre/
 
 *test.py
+.idea/Data-Structure-Algorithm.iml
+.idea/fileTemplates/internal/Python Script.py
+.idea/misc.xml
+.idea/Data-Structure-Algorithm.iml
