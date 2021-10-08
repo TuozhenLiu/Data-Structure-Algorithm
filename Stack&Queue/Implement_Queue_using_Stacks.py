@@ -41,3 +41,36 @@
 # Follow-up: Can you implement the queue such that each operation is amortized O(1) time complexity?
 # In other words, performing n operations will take overall O(n) time even if one of those operations may take longer.
 # ----------------------------------------------------------------------------------------------------------------------
+class MyQueue:
+
+    def __init__(self):
+        self.stack_in = list()
+        self.stack_out = list()
+
+    def push(self, x: int) -> None:
+        self.stack_in.append(x)
+
+    def pop(self) -> int:
+        if not self.stack_out:
+            while self.stack_in:
+                tmp = self.stack_in.pop()
+                self.stack_out.append(tmp)
+        return self.stack_out.pop()
+
+    def peek(self) -> int:
+        if not self.stack_out:
+            while self.stack_in:
+                tmp = self.stack_in.pop()
+                self.stack_out.append(tmp)
+        return self.stack_out[-1]
+
+    def empty(self) -> bool:
+        return not self.stack_in and not self.stack_out
+
+
+# Your MyQueue object will be instantiated and called as such:
+# obj = MyQueue()
+# obj.push(x)
+# param_2 = obj.pop()
+# param_3 = obj.peek()
+# param_4 = obj.empty()
