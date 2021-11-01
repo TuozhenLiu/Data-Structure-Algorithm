@@ -38,6 +38,15 @@
 
 https://blog.csdn.net/qq_36528114/article/details/78173951
 
+Binary Tree
+
+- DFS 深度优先
+  - 前序、中序、后序遍历
+    - 递归、递推（stack）
+- BFS 广度优先
+  - 层序遍历
+    - queue
+
 
 
 

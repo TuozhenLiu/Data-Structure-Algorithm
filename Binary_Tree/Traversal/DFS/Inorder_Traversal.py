@@ -60,19 +60,25 @@ class Solution:
     # space complexity: O(N) stack: avg O(logN), worst O(N)
 
     # iterative
-    # def inorderTraversal_2(self, root: TreeNode) -> List[int]:
-    #     if not root:
-    #         return []
-    #
-    #     result = []
-    #     stack = [root]
-    #
-    #     while stack:
-    #         node = stack.pop()
-    #         result.append(node.val)
-    #         if node.right:
-    #             stack.append(node.right)
-    #         if node.left:
-    #             stack.append(node.left)
-    #
-    #     return result
+    # 在使用迭代法写中序遍历，就需要借用指针的遍历来帮助访问节点，栈则用来处理节点上的元素。
+    def inorderTraversal_2(self, root: TreeNode) -> List[int]:
+        if not root:
+            return []
+
+        result = []
+        stack = []
+        cur = root
+
+        while cur or stack:
+            # 先迭代访问最底层的左子树结点
+            if cur:
+                stack.append(cur)
+                cur = cur.left
+            # 到达最左结点后处理栈顶结点
+            else:
+                cur = stack.pop()
+                result.append(cur.val)
+                # 取栈顶元素右结点
+                cur = cur.right
+
+        return result
