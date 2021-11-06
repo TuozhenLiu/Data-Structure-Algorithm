@@ -29,13 +29,16 @@
 
 # Follow-up: Can you come up with an algorithm that is less than O(n2) time complexity?
 # ----------------------------------------------------------------------------------------------------------------------
+from typing import List
+
+
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         record = dict()
         for id, num in enumerate(nums):
             diff = target - num
             if diff in record.keys():
-                return id, record[diff]
+                return [id, record[diff]]
             else:
                 record[num] = id
     # time complexity: O(N)
