@@ -50,6 +50,8 @@ class Solution:
 
         backtracking(n, k, 1)
         return res
+# time complexity: O(C(N K) * K)  C(N, k)个组合，记录答案需要K（拷贝）
+# space complexity: O(N + K)
 
 
 solution = Solution()

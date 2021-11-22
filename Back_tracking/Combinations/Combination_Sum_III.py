@@ -72,3 +72,5 @@ class Solution:
 
         findallPath(n, k, 0, 1)
         return res
+# time complexity: O(C(M K) * K)  C(M, k)个组合，记录答案需要K（拷贝）本例 M = 9
+# space complexity: O(M + K)
